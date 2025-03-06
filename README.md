@@ -24,7 +24,12 @@
    — "prd": "cross-env NODE_ENV=production pm2 start bin/www",
 
 
+测试 
 
+   工具 jest 
+   配置 "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors"
+   测试文件目录 test
+   测试文件后缀  .test.js
 
 
 
