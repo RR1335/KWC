@@ -26,13 +26,17 @@
 
 测试 
 
-   工具 jest 
+   工具 jest  |  supertest
    配置 "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors"
    测试文件目录 test
    测试文件后缀  .test.js
 
 
+Chrome inspect 调试
 
+   chrome://inspect 
+   "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon --inspect=9229 bin/www“
+   默认端口： 9229
 
 
 
