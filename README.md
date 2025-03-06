@@ -8,6 +8,9 @@
     JWT 
     Redis
     Jest
+    koa-redis 
+    koa-generic-session
+    sequelize
 
 页面和JavaScript脚本路径
 
@@ -37,3 +40,24 @@
    app
    以上四个文件或文件夹调整掉 src （source） 源文件目录下。
    同时调整 bin/www.js 的 app 启动目录。
+   conf ： 对数据库配置
+   cache : redis 操作，以及业务逻辑层对 redis 操作
+   utils ： 环境变量的信息
+   ztest/seq ： sequelize 的操作练习代码
+
+配置 SESSION
+
+   app.keys = ['asdfjiIUSke787*^(#*&384#KjJHKHHH3sSDD^&*^323']
+   app.use(session({
+   key: 'KWC Blog.SID ',         // cookie name 默认 koa.sid
+   prefix: 'KWC Blog: sess - ',     // redis key 前缀，默认 koa:sess
+   cookie: {
+      path: '/',
+      httpOnly: true,
+      maxAge : 24 * 60 * 60 * 1000  // 1 day
+   },
+   ttl: 24 * 60 * 60 * 1000 ,   // redis 过期时间 ， 默认和 cookies maxAge 一致
+   store: redisStore({
+      all: `${REDIS_CONF.host}:${REDIS_CONF.port}`
+   })
+   }))
