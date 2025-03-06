@@ -10,12 +10,22 @@ const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 
 const { REDIS_CONF } = require('./conf/db')
+const { isProd } = require('./utils/env')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
 
+const errorViewRouter = require('./routes/view/error')
+
+
 // error handler
-onerror(app)
+let onerrorConf = {}
+if (isProd) {
+  onerrorConf = {
+    redirect : '/error'
+  }
+}
+onerror(app, onerrorConf)
 
 // middlewares
 app.use(bodyparser({
@@ -57,6 +67,9 @@ app.use(session({
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+
+// 404 是 * ， error 的路由在最后一个
+app.use(errorViewRouter.routes(),errorViewRouter.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
