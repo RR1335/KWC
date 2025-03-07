@@ -57,6 +57,7 @@
 
 ##配置 SESSION
 
+```
    app.keys = ['asdfjiIUSke787*^(#*&384#KjJHKHHH3sSDD^&*^323']
    app.use(session({
    key: 'KWC Blog.SID ',         // cookie name 默认 koa.sid
@@ -71,3 +72,4 @@
       all: `${REDIS_CONF.host}:${REDIS_CONF.port}`
    })
    }))
+```
