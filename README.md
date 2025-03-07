@@ -55,6 +55,12 @@
       utils ： 环境变量的信息
       ztest/seq ： sequelize 的操作练习代码
 
+      src / controller  控制层 
+      src / services    服务层
+      src / model       格式化输出，错误信息
+      src / conf / constant.js 所有默认数据
+      
+
 ## 配置 SESSION
 
 ```
