@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%= title%></title>
 
-    <link href="../../public/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css/main.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 
     <% if (locals.list) { %>
     <%# 有微博列表，以及右侧面板 %>
-    <link href="../../public/css/list.css" rel="stylesheet">
-    <link href="../../public/css/right.css" rel="stylesheet">
+    <link href="/css/list.css" rel="stylesheet">
+    <link href="/css/right.css" rel="stylesheet">
     <% } %>
 
     <% if (locals.isNarrow) { %>
@@ -29,19 +29,19 @@
 
     <% if (locals.isNav) { %>
     <%# 有导航%>
-    <link href="../../public/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
     <% } %>
 
     <!-- jquery 要首先引入-->
-    <script src="../../public/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
     <!-- 封装的 ajax -->
-    <script src="../../public/javascripts/my-ajax.js"></script>
+    <script src="/javascripts/my-ajax.js"></script>
 
     <% if (locals.isInputBlog) { %>
     <%# 有发布微博的功能，需要 at.js https://github.com/ichord/At.js %>
-    <link href="../../public/css/jquery.atwho.css" rel="stylesheet">
-    <script src="../../public/javascripts/jquery.caret.js"></script>
-    <script src="../../public/javascripts/jquery.atwho.js"></script>
+    <link href="/css/jquery.atwho.css" rel="stylesheet">
+    <script src="/javascripts/jquery.caret.js"></script>
+    <script src="/javascripts/jquery.atwho.js"></script>
     <% } %>
 </head>
 <body>

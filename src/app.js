@@ -13,7 +13,11 @@ const { REDIS_CONF } = require('./conf/db')
 const { isProd } = require('./utils/env')
 
 const index = require('./routes/index')
-const users = require('./routes/users')
+// const users = require('./routes/users')
+// 注册 view 路由
+const userViewRouter = require('./routes/view/user')
+
+// 注册 API 路由
 
 const errorViewRouter = require('./routes/view/error')
 
@@ -66,7 +70,8 @@ app.use(session({
 
 // routes
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+// app.use(users.routes(), users.allowedMethods())
+app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
 
 // 404 是 * ， error 的路由在最后一个
 app.use(errorViewRouter.routes(),errorViewRouter.allowedMethods())
