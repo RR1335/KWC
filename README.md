@@ -14,24 +14,23 @@
 
 页面和JavaScript脚本路径
 
-   页面 ejs —— views
+      页面 ejs —— views
 
-   JavaScript and CSS —— public / css and public / javascirpt
+      JavaScript and CSS —— public / css and public / javascirpt
 
 环境变量的配置
 
-   cross-env —— 跨 Windows / macOS / Linux 三个平台。
-   
-   — "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
-   — "prd": "cross-env NODE_ENV=production pm2 start bin/www",
+      cross-env —— 跨 Windows / macOS / Linux 三个平台。
+      — "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
+      — "prd": "cross-env NODE_ENV=production pm2 start bin/www",
 
 
 测试 
 
-   工具 jest  |  supertest
-   配置 "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors"
-   测试文件目录 test
-   测试文件后缀  .test.js
+      工具 jest  |  supertest
+      配置 "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors"
+      测试文件目录 test
+      测试文件后缀  .test.js
 
 
 Chrome inspect 调试
