@@ -15,11 +15,13 @@
 页面和JavaScript脚本路径
 
    页面 ejs —— views
+
    JavaScript and CSS —— public / css and public / javascirpt
 
 环境变量的配置
 
    cross-env —— 跨 Windows / macOS / Linux 三个平台。
+   
    — "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
    — "prd": "cross-env NODE_ENV=production pm2 start bin/www",
 
