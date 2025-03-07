@@ -34,7 +34,7 @@ const  User = seq.define('user', {
         comment : '头像，存储图片URL地址'
 
     },
-    ctiy : {
+    city : {
         type : STRING,
         allowNull : true,
         comment : '城市 ， RR1335后续改成城市列表选择'
