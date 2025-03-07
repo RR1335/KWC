@@ -5,7 +5,7 @@
 
 const seq = require('./seq')
 
-require('./model/indexModel')
+// require('./model')
 
 seq.authenticate().then(() => {
     console.log('ok')

@@ -16,7 +16,6 @@ const index = require('./routes/index')
 // const users = require('./routes/users')
 // 注册 view 路由
 const userViewRouter = require('./routes/view/user')
-const userAPIRouter = require('./routes/API/user')
 
 // 注册 API 路由
 
@@ -73,7 +72,6 @@ app.use(session({
 app.use(index.routes(), index.allowedMethods())
 // app.use(users.routes(), users.allowedMethods())
 app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
-app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods())
 
 // 404 是 * ， error 的路由在最后一个
 app.use(errorViewRouter.routes(),errorViewRouter.allowedMethods())
