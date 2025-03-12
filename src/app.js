@@ -11,6 +11,7 @@ const redisStore = require('koa-redis')
 
 const { REDIS_CONF } = require('./conf/db')
 const { isProd } = require('./utils/env')
+const { SESSION_SECRET_KEY } = require('./conf/secretKeys')
 
 const index = require('./routes/index')
 // const users = require('./routes/users')
@@ -45,7 +46,7 @@ app.use(views(__dirname + '/views', {
 }))
 
 // session 配置
-app.keys = ['asdfjiIUSke787*^(#*&384#KjJHKHHH3sSDD^&*^323']
+app.keys = [SESSION_SECRET_KEY]
 app.use(session({
   key: 'KWC Blog.SID ',         // cookie name 默认 koa.sid
   prefix: 'KWC Blog: sess - ',     // redis key 前缀，默认 koa:sess

@@ -4,5 +4,5 @@
  */
 
 module.exports = {
-    DEF_PICTURE : 'https://lc.baijing.biz/'
+    DEF_PICTURE : 'https://lc.baijing.biz/',
 }
