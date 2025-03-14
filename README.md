@@ -55,11 +55,42 @@
       utils ： 环境变量的信息
       ztest/seq ： sequelize 的操作练习代码
 
+
+
+## 加密
+
+      doCrypto 加密 MD5 
+      conf / secretkeys  Keys ID 
+
+## 数据格式校验
+
+      validator / _validator.js 数据格式校验
+      采用 JSON Schema 格式校验
+      ajv 是校验的中间件
+
+      router 中的校验能写在
+            router.post('/', async (ctx,next) => { 校验 }, async (ctx,next) => { 执行路由 })
+      不过对于校验函数，是一个公共属性，抽离为中间件
+      middlewares / 校验函数 
+
+      这是要调整的，体现一下校验在路由中的逻辑
+      router.post('/register', async (ctx , next) => {
+      // 校验
+      userValidate(ctx.request.body)
+      }, async (ctx , next) => {
+      const { userName ,password , gender } = ctx.request.body
+      // controller 
+      ctx.body = await register({ userName ,password , gender })
+
+      })
+
+=======
       src / controller  控制层 
       src / services    服务层
       src / model       格式化输出，错误信息
       src / conf / constant.js 所有默认数据
       
+
 
 ## 配置 SESSION
 
