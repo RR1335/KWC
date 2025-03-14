@@ -72,6 +72,17 @@
       不过对于校验函数，是一个公共属性，抽离为中间件
       middlewares / 校验函数 
 
+      这是要调整的，体现一下校验在路由中的逻辑
+      router.post('/register', async (ctx , next) => {
+      // 校验
+      userValidate(ctx.request.body)
+      }, async (ctx , next) => {
+      const { userName ,password , gender } = ctx.request.body
+      // controller 
+      ctx.body = await register({ userName ,password , gender })
+
+      })
+
 
 ## 配置 SESSION
 
