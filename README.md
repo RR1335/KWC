@@ -111,3 +111,10 @@
    }))
    https://g-phrh5558.coding.net/public/nb/kwc/git/files 来自早起版本
 ```
+
+
+## 备注
+
+      前端没有做 Data format 校验，所有的校验都在后端。
+      这是为了验证后端校验是否生效，以及所有的 error 提示动作都到位。
+      register 表单等。
