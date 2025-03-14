@@ -2,7 +2,7 @@
  * @description 测试
  */
 
-const server = require('../test/server')
+const server = require('./server')
 
 // test('JSON 返回正确测试： ' , async () => {
 //     const res = await server.get('/json')
