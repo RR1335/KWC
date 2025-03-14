@@ -1,0 +1,44 @@
+/**
+ * @description   user model 测试
+ * @author        RR1335
+ */
+
+const { User }  = require('../src/db/model/User')
+
+// test('User 模型的属性', () => {
+//     // build 在内存中构建一个 User 实例，而不会写入 Database 
+//     const user = User.build({
+//         userName: 'sam',
+//         password: '123',
+//         nickName: 'sam',
+//         picture: '/xxx.png',
+//         city: '北京'
+//     })
+
+//     expect(user.userName).toBe('sam')
+//     expect(user.password).toBe('123')
+//     expect(user.nickName).toBe('san')
+//     expect(user.gender).toBe(3)               // 默认值： 3
+//     expect(user.picture).toBe('/xxx.png')
+//     expect(user.city).toBe('北京')
+// })
+
+
+test('User 模型的各个属性，符合预期', () => {
+    // 构建一个内存的User实例，但不会提交数据库
+    const user = User.build({
+      userName: 'zhangsan',
+      password: 'p123',
+      nickName: '张三',
+      // gender: 1,
+      picture: '/xxx.png',
+      city: '北京'
+    })
+    // 验证各个属性
+    expect(user.userName).toBe('zhangsan')
+    expect(user.password).toBe('p123')
+    expect(user.nickName).toBe('张三')
+    expect(user.gender).toBe(3)
+    expect(user.picture).toBe('/xxx.png')
+    expect(user.city).toBe('北京')
+  })
