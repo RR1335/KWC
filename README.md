@@ -62,6 +62,9 @@
       doCrypto 加密 MD5 
       conf / secretkeys  Keys ID 
 
+      对于 getUserInfo(userName, doCrypto(password) ) 注意⚠️保存数据库的用户信息都已经被加密了获取信息同样要被加密
+
+
 ## 数据格式校验
 
       validator / _validator.js 数据格式校验
@@ -112,6 +115,14 @@
    }))
    https://g-phrh5558.coding.net/public/nb/kwc/git/files 来自早起版本
 ```
+
+      127.0.0.1:6379> keys *
+      1) "KWC Blog: sess - ZL8RX_mILIM7300tAuVZnNeWSeia3g0x"
+
+      127.0.0.1:6379> get "KWC Blog: sess - ZL8RX_mILIM7300tAuVZnNeWSeia3g0x"
+      "{\"cookie\":{\"path\":\"/\",\"httpOnly\":true,\"maxAge\":86400000,\"overwrite\":true,\"signed\":true},\"userInfo\":{\"id\":6,\"userName\":\"san\",\"nickName\":\"san\",\"picture\":\"https://lc.baijing.biz/\",\"city\":null}}"
+
+      在 Cookie 中存的 KWC blog.SID 和 redis 中的值一致，保证了 session 后续存取用户数据且在浏览器侧进行了数据加密
 
 
 ## 备注
