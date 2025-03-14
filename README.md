@@ -56,6 +56,7 @@
       ztest/seq ： sequelize 的操作练习代码
 
 
+
 ## 加密
 
       doCrypto 加密 MD5 
@@ -82,6 +83,13 @@
       ctx.body = await register({ userName ,password , gender })
 
       })
+
+=======
+      src / controller  控制层 
+      src / services    服务层
+      src / model       格式化输出，错误信息
+      src / conf / constant.js 所有默认数据
+      
 
 
 ## 配置 SESSION
