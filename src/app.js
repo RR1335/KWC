@@ -48,8 +48,8 @@ app.use(views(__dirname + '/views', {
 // session 配置
 app.keys = [SESSION_SECRET_KEY]
 app.use(session({
-  key: 'KWC Blog.SID ',         // cookie name 默认 koa.sid
-  prefix: 'KWC Blog: sess - ',     // redis key 前缀，默认 koa:sess
+  key: 'KWC Blog.SID',         // cookie name 默认 koa.sid
+  prefix: 'KWC Blog:sess-',     // redis key 前缀，默认 koa:sess
   cookie: {
     path: '/',
     httpOnly: true,
