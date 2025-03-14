@@ -14,6 +14,7 @@ function getLoginInfo(ctx) {
         isLogin:false     // 默认未登录
     }
 
+    // console.log('ctx.session.userInfo__: ',ctx.session.userInfo)
     const userInfo = ctx.session.userInfo
 
     if (userInfo) {
