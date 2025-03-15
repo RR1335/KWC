@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const app = new Koa()
+const path = require('path')
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
@@ -8,20 +9,26 @@ const logger = require('koa-logger')
 // import logger from 'koa-logger'
 const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
+const  koastatic= require('koa-static')
 
 const { REDIS_CONF } = require('./conf/db')
 const { isProd } = require('./utils/env')
 const { SESSION_SECRET_KEY } = require('./conf/secretKeys')
 
+
 // index and users 为 koa2 默认生成的路由
 // const index = require('./routes/index.js-0ld')
+// const index = require('./routes/index')
 // const users = require('./routes/users')
 // 注册 view 路由
 const userViewRouter = require('./routes/view/user')
-const userAPIRouter = require('./routes/API/user')
+
 
 // 注册 API 路由
+const userAPIRouter = require('./routes/API/user')
+const utilsAPIRouter = require('./routes/API/utils')
 
+// 错误处理，在所有路由的最后处理
 const errorViewRouter = require('./routes/view/error')
 
 
@@ -40,7 +47,9 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(koastatic(__dirname + '/public'))
+// 图片上传的 path 
+app.use(koastatic(path.join(__dirname,'..', 'uploadfiles')))
 
 app.use(views(__dirname + '/views', {
   extension: 'ejs'
@@ -78,6 +87,7 @@ app.use(session({
 // app.use(users.routes(), users.allowedMethods())
 app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
 app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods())
+app.use(utilsAPIRouter.routes(),utilsAPIRouter.allowedMethods())
 
 // 404 是 * ， error 的路由在最后一个
 app.use(errorViewRouter.routes(),errorViewRouter.allowedMethods())

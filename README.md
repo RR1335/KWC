@@ -95,6 +95,24 @@
       src / conf / constant.js 所有默认数据
       
 
+## 图片上传
+
+      上传图片，用到了两个中间件
+       formidable-upload-koa 和  fs-extra 
+
+            const options = {
+            uploadDir: `${__dirname}/`,
+            keepExtensions: true
+            };
+
+            router.post("/uploader", koaForm(options), ctx => {
+            // Access to
+            // ctx.req.files
+            // ctx.req.fields
+            // The file has been uploaded in the folder choosen above.
+            });
+
+      view/api/utils.js 用公共属性处理图片上传
 
 ## 配置 SESSION
 
