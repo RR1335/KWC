@@ -13,7 +13,8 @@ const { REDIS_CONF } = require('./conf/db')
 const { isProd } = require('./utils/env')
 const { SESSION_SECRET_KEY } = require('./conf/secretKeys')
 
-const index = require('./routes/index')
+// index and users 为 koa2 默认生成的路由
+// const index = require('./routes/index.js-0ld')
 // const users = require('./routes/users')
 // 注册 view 路由
 const userViewRouter = require('./routes/view/user')
@@ -73,7 +74,7 @@ app.use(session({
 // })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
+// app.use(index.routes(), index.allowedMethods())
 // app.use(users.routes(), users.allowedMethods())
 app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
 app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods())
