@@ -13,6 +13,13 @@ const MAX_SIZE =  2048 * 1024 * 1024
 // 存储目录
 const DIST_UPLOAD_PATH = path.join(__dirname,'..','..','uploadfiles')
 
+// 是否需要创建目录
+fse.pathExists(DIST_UPLOAD_PATH).then(exist => {
+    if (!exist) {
+        fse.ensureDir(DIST_UPLOAD_PATH)
+    }
+})
+
 /**
  * 存储文件
  * @param {Object} param0  { name , size , type , filePath }
