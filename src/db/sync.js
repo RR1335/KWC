@@ -15,6 +15,6 @@ seq.authenticate().then(() => {
 
 // force: true , 每次通过都会清空表
 seq.sync({ force: true}).then(() => {
-    console.log('同步 users table 成功！！！')
+    console.log('同步 table 成功！！！')
     process.exit()
 })

@@ -120,6 +120,16 @@
       通过 npm list ali-oss 确认是否已经安装 ali-oss node中间件
       npm install ali-oss@^6.x --save
 
+
+## 外键
+
+      // Blog 外键 userId
+      Blog.belongsTo(User,{
+      foreignKey: 'userId'
+      })
+
+
+
 ## 配置 SESSION
 
 ```
