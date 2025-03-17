@@ -66,12 +66,12 @@ module.exports = {
       errno: 10012,
       message: '取消关注失败'
     },
-    // 创建微博失败
+    // 创建KWC失败
     createBlogFailInfo: {
       errno: 11001,
       message: '创建WBS失败，请重试'
     },
-    // 删除微博失败
+    // 删除KWC失败
     deleteBlogFailInfo: {
       errno: 11002,
       message: '删除WBS失败，请重试'

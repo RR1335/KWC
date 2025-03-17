@@ -1,4 +1,4 @@
-<!-- 微博输入框 -->
+<!-- KWC 信息输入框 -->
 <div class="margin-bottom-10 padding-bottom-10 border-bottom">
     <textarea class="form-control" id="text-content" rows="3"></textarea>
     <div class="margin-top-10">
@@ -43,14 +43,14 @@ $(function () {
         $filePicture.click()
     })
 
-    // 发布微博
+    // 发布KWC
     $('#btn-submit').click(function () {
         var content = $textContent.val().trim()
         var imgUrl = $inputImgUrl.val() || ''
 
         // 验证
         if (content.length === 0) {
-            alert('请输入微博内容')
+            alert('请输入KWC内容')
             return
         }
 
