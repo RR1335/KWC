@@ -7,6 +7,7 @@ const router = require('koa-router')()
 const { isExist,
         register,
         login ,
+        logout,
         deleteCurUser,
         changePassword,
         changeInfo} = require('../../controller/user')
@@ -66,6 +67,13 @@ router.patch('/changePassword',loginCheck , genValidator(userValidate), async (c
     const { userName } = ctx.session.userInfo
     //controller
     ctx.body = await changePassword(userName,password,newPassword)
+})
+
+
+// 退出登录
+router.post('/logout', loginCheck , async (ctx , next) => {
+    // logout 操作没有任何参数传入操作，直接调用 controller 
+    ctx.body = await logout(ctx)
 })
 
 
