@@ -22,6 +22,9 @@ router.post('/upload', loginCheck , koaForm(), async ( ctx , next ) => {
     // ctx.req 是 Node's request object.  ctx.request 才是 A Koa Request object.
     // 这里从 node request object 取数据
     const file = ctx.req.files['file']
+    if (!file) {
+        return
+    }
     // 获取文件的信息和数据
     const { name , size , type , path } = file
     // controller 
