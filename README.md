@@ -113,6 +113,12 @@
             });
 
       view/api/utils.js 用公共属性处理图片上传
+      
+
+      如果采用阿里云 OSS 存储文件，访问和存取的相关文件都在
+      https://help.aliyun.com/zh/oss/developer-reference/getting-started-with-oss-sdk-for-node-js
+      通过 npm list ali-oss 确认是否已经安装 ali-oss node中间件
+      npm install ali-oss@^6.x --save
 
 ## 配置 SESSION
 

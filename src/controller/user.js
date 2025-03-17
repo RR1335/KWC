@@ -3,11 +3,12 @@
  * @author        RR1335
  */
 
-const { getUserInfo ,createUser,deleteUser } = require('../services/user')
+const { getUserInfo ,createUser,deleteUser,updateUser } = require('../services/user')
 const { SuccessModel , ErrorModel } = require('../model/ResModel')
 const { registerUserNameNotExistInfo , 
         registerUserNameExistInfo,
         loginFailInfo,
+        changeInfoFailInfo,
         deleteUserFailInfo } = require('../model/ErrorInfo')
 const { doCrypto } = require('../utils/crypto')
 
@@ -113,9 +114,50 @@ async  function  deleteCurUser(userName) {
 }
 
 
+/**
+ * 修改用户信息
+ * @param {Object} ctx      ctx 传数据
+ * @param {*} param1        修改的内容 { nickName , city , picture  }
+ */
+async function changeInfo(ctx,{ nickName , city , picture  }) {
+    const { userName } = ctx.session.userInfo
+
+    // 作为一个保护机制，可有可无；在注册时已经有过赋值
+    if (!nickName) {
+        nickName = userName
+    }
+
+    // service
+    const result = await updateUser( 
+        {
+            newNickName : nickName,
+            newCity : city,
+            newPicture : picture
+        },
+        { userName }
+    )
+
+    if (result) {
+        // 执行成功 
+        // const returnedTarget = Object.assign(target, source);
+        Object.assign(ctx.session.userInfo, {
+            nickName,
+            city,
+            picture
+        })
+
+        return new SuccessModel()
+    }
+
+    return new ErrorModel(changeInfoFailInfo)
+}
+
+
+
 module.exports = {
     isExist,
     register,
     login,
-    deleteCurUser
+    deleteCurUser,
+    changeInfo
 }

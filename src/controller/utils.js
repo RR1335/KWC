@@ -31,6 +31,9 @@ async function saveFile({ name , size , type , filePath }) {
     }
 
     // 移动文件
+    // 对于在线项目，将有文件服务（CDN等）解决，一般是云服务商提供文件存储接口
+    // 通过调用，云服务商返回一个URL作为图片的有效URL存储到数据库
+    // 阿里云 OSS 的文档说明建 readme 
     const fileName = Date.now()+'_'+name   // 防止重名
     const distFilePath = path.join(DIST_UPLOAD_PATH,fileName)
     await fse.move(filePath,distFilePath)
