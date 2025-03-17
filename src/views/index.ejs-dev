@@ -62,3 +62,11 @@
 </div>
 
 <%- include('layout/footer')%>
+
+
+备注：
+
+在逐步开发过程中，index and space 页面才会逐步完善；
+这个完整的页面，在开发中由于有当前未开发的 javascript 代码 或 数据无法获取会导致 404 
+开发过程中，逐步丰富页面，才有了 -old ，
+根据开发节奏，拷贝内容到 index.ejs 中。
