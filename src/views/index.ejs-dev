@@ -1,4 +1,4 @@
-<%- include('layout/header', { title: '微博 - 首页', isNav: true, list: true, isInputBlog: true })%>
+<%- include('layout/header', { title: ' KWC - 首页', isNav: true, list: true, isInputBlog: true })%>
 
 <div class="container margin-top-20">
     <div class="row">
@@ -7,19 +7,19 @@
             <!-- 输入框 -->
             <%- include('widgets/input')%>
 
-            <!-- 微博列表 -->
+            <!-- KWC列表 -->
             <% if (blogData.isEmpty) { %>
                 <div>
                     <center>暂无数据</center>
                 </div>
             <% } else { %>
-                <!-- 微博列表 -->
+                <!-- KWC列表 -->
                 <div id="container-weibo-list" class="weibo-list">
                     <%- include('widgets/blog-list', {
                         blogList: blogData.blogList,
                         canReply: true
                     })%>
-                </div> <!-- 微博列表 结束 -->
+                </div> <!-- KWC列表 结束 -->
                 <!-- 加载更多 -->
                 <% if (blogData.count > blogData.blogList.length) { %>
                     <%- include('widgets/load-more', {
