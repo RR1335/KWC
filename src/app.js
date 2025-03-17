@@ -26,6 +26,7 @@ const blogViewRouter = require('./routes/view/blog')
 
 
 // 注册 API 路由
+const blogIndexAPIRouter = require('./routes/API/blog-index')
 const userAPIRouter = require('./routes/API/user')
 const utilsAPIRouter = require('./routes/API/utils')
 
@@ -86,8 +87,12 @@ app.use(session({
 // routes
 // app.use(index.routes(), index.allowedMethods())
 // app.use(users.routes(), users.allowedMethods())
+// view router
 app.use(blogViewRouter.routes(),blogViewRouter.allowedMethods())
 app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
+
+// api router
+app.use(blogIndexAPIRouter.routes(),blogIndexAPIRouter.allowedMethods())
 app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods())
 app.use(utilsAPIRouter.routes(),utilsAPIRouter.allowedMethods())
 
