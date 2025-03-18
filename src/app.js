@@ -29,6 +29,7 @@ const blogViewRouter = require('./routes/view/blog')
 const blogIndexAPIRouter = require('./routes/API/blog-index')
 const userAPIRouter = require('./routes/API/user')
 const blogProfileAPIRouter = require('./routes/API/blog-profile')
+const squareAPIRouter = require('./routes/API/blog-square')
 const utilsAPIRouter = require('./routes/API/utils')
 
 // 错误处理，在所有路由的最后处理
@@ -96,6 +97,7 @@ app.use(userViewRouter.routes(),userViewRouter.allowedMethods())
 app.use(blogIndexAPIRouter.routes(),blogIndexAPIRouter.allowedMethods())
 app.use(userAPIRouter.routes(),userAPIRouter.allowedMethods())
 app.use(blogProfileAPIRouter.routes(),blogProfileAPIRouter.allowedMethods())
+app.use(squareAPIRouter.routes(),squareAPIRouter.allowedMethods())
 app.use(utilsAPIRouter.routes(),utilsAPIRouter.allowedMethods())
 
 // 404 是 * ， error 的路由在最后一个

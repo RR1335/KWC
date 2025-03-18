@@ -9,8 +9,8 @@ const ejs = require('ejs')
 
 
 // 获取 blog-list.ejs 的文件内容
-const  BLOG_LIST_TPL = fs.readFileSync(
-    path.join(__dirname,'..','views','widgets','blog-list.ejs')
+const  BLOG_LIST_TPL = fs
+        .readFileSync(path.join(__dirname,'..','views','widgets','blog-list.ejs')
         .toString()
 )
 
@@ -20,7 +20,7 @@ const  BLOG_LIST_TPL = fs.readFileSync(
  * @param {Array} blogList 
  * @param {boolean} canReply  是否可以回复
  */
-function getBlogListString(blogList = [], canReply = false) {
+function getBlogListStr(blogList = [], canReply = false) {
     return ejs.render(BLOG_LIST_TPL, {
         blogList,
         canReply
@@ -29,5 +29,5 @@ function getBlogListString(blogList = [], canReply = false) {
 
 
 module.exports = {
-    getBlogListString
+    getBlogListStr
 }

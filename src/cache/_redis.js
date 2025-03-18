@@ -3,7 +3,7 @@
  * @author RR1335
  */
 
-const redis = require('redis')
+const redis = require('ioredis')
 const { REDIS_CONF } = require('../conf/db')
 
 // 创建连接
