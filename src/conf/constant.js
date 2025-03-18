@@ -5,4 +5,5 @@
 
 module.exports = {
     DEF_PICTURE : 'https://lc.baijing.biz/',
+    PAGE_SIZE : 5
 }
