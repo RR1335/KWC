@@ -5,6 +5,7 @@
 
 const { User , UserRelation } = require('../db/model/indexModel')
 const { formatUser } = require('./_format')
+const Sequelize = require('sequelize')
 
 /**
  * 获取关注该用户的用户列表，即：粉丝列表
@@ -20,7 +21,12 @@ async function  getUsersByFollower(followerId) {
             {
                 model: UserRelation,
                 where: {
-                    followerId
+                    followerId,
+                    userId: {
+                        // user.js 创建用户时增加了 用户关注自己的动作
+                        // 在关注和粉丝列表显示时，去掉用户自己关注的显示
+                        [Sequelize.Op.ne]:followerId
+                    }
                 }
             }
         ]
@@ -54,7 +60,10 @@ async function  getFollowersByUser(userId) {
             }
         ],
         where: {
-            userId
+            userId,
+            followerId: {
+                [Sequelize.Op.ne]: userId
+            }
         }
     })
 
