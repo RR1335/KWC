@@ -3,8 +3,8 @@
  * @author        RR1335
  */
 
-const { Blog,User } = require('../db/model/indexModel')
-const { formatUser } = require('./_format')
+const { Blog,User, UserRelation } = require('../db/model/indexModel')
+const { formatUser,formatBlog } = require('./_format')
 
 
 /**
@@ -68,9 +68,48 @@ async function getBlogListByUser({userName, pageIndex = 0, pageSize = 5}) {
     }
 }
 
+/**
+ * 获取关注者的 Blog list
+ * @param {*} param0  {userId, pageIndex = 0 , pageSize = 5}
+ */
+async function getFollowersBlogList({userId, pageIndex = 0 , pageSize = 5}) {
+    const result = await Blog.findAndCountAll({
+        limit : pageSize,
+        offset : pageSize * pageIndex,
+        order: [
+            ['id','desc']
+        ],
+        include:[
+            {
+                model: User,
+                attributes: ['userName','nickName','picture']
+            },
+            {
+                model: UserRelation,
+                attributes: ['userId','followerid'],
+                where: { userId }
+            }
+        ]
+    })
+
+    let blogList = result.rows.map( row => row.dataValues)
+    blogList = formatBlog(blogList)
+
+    blogList = blogList.map( blogItem => {
+        blogItem.user = formatUser(blogItem.user.dataValues)
+        return blogItem
+    })
+    return {
+        count : result.count,
+        blogList
+    }
+}
+
+
 
 
 module.exports = {
     createBlog,
-    getBlogListByUser
+    getBlogListByUser,
+    getFollowersBlogList
 }

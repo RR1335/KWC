@@ -3,10 +3,12 @@
  * @author        RR1335
  */
 
+const xss = require('xss')
+const { PAGE_SIZE } = require('../conf/constant')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
 const { createBlogFailInfo } = require('../model/ErrorInfo')
-const { createBlog } = require('../services/blog')
-const xss = require('xss')
+const { createBlog ,getFollowersBlogList} = require('../services/blog')
+
 
 /**
  * 创建 
@@ -33,6 +35,27 @@ async function create({userId, content, image}) {
 }
 
 
+/**
+ * 获取 Blog list
+ * @param {number} userId       用户 id
+ * @param {number} pageIndex    第几页
+ */
+async  function  getIndexBlogList(userId,pageIndex = 0) {
+    const result = await getFollowersBlogList({userId,pageIndex,PAGE_SIZE})
+
+    const {count , blogList } = result
+
+    return new SuccessModel({
+        isEmpty: blogList.length === 0,
+        blogList,
+        pageSize: PAGE_SIZE,
+        pageIndex,
+        count
+    })
+}
+
+
 module.exports = {
-    create
+    create,
+    getIndexBlogList
 }
