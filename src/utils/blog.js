@@ -3,16 +3,15 @@
  * @author         RR1335
  */
 
-const fs = require('node:fs')
-const path = require('node:path')
+const fs = require('fs')
+const path = require('path')
 const ejs = require('ejs')
 
 
 // 获取 blog-list.ejs 的文件内容
 const  BLOG_LIST_TPL = fs
-        .readFileSync(path.join(__dirname,'..','views','widgets','blog-list.ejs')
+        .readFileSync(path.join(__dirname,'..','views','widgets','blog-list.ejs'))
         .toString()
-)
 
 
 /**
