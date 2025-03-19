@@ -23,15 +23,15 @@ async function getSquareCacheList(pageIndex, pageSize) {
     if (cacheResult != null) {
         // 缓存获取成功
         return cacheResult
+    } else {
+        // 无缓存（第一次访问）或缓存过期 
+        const result = await getBlogListByUser({pageIndex,pageSize})
+        // 设置缓存
+        set(key , result, 60)      // 60秒
+
+        return result
     }
 
-    // 无缓存（第一次访问）或缓存过期 
-    const result = await getBlogListByUser({pageIndex,pageSize})
-    // 设置缓存
-    set(key , result, 60)      // 60秒
-
-    return result
-    
 }
 
 module.exports = {
