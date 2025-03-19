@@ -13,29 +13,31 @@
 <% } else { %>
     <%# 不是当前登录用户%>
     <p class="margin-top-10">
-        <button>关注 / 取消关注</button>
-        <!-- <button id="btn-un-follow" class="btn btn-light" style="display: none;">取消关注</button>
-        <button id="btn-follow" class="btn btn-primary" style="display: none;">关注</button> -->
+        <button id="btn-un-follow" class="btn btn-light" style="display: none;">取消关注</button>
+        <button id="btn-follow" class="btn btn-primary" style="display: none;">关注</button>
     </p>
 <% } %>
 
 <script>
 $(function () {
-    // 当前用户 id
-    var curUserId = <%= userInfo.id%> ;
+      // 当前用户 id
+      var curUserId = <%= userInfo.id%>
+      var curisMe = <%= isMe%>
+      var curBtn = <%= locals.amIFollowed%>
 
-    // 按钮，显示和隐藏
-    var $btnFollow = $('#btn-follow')
-    var $btnUnFollow = $('#btn-un-follow')
-    if (<%= !isMe%>) {
-        // 不是当前用户，则显示“关注”或者“取消关注”
-        <button>关注 / 取消关注</button>
-        if (<%= locals.amIFollowed%>) {
-            $btnUnFollow.show()
+
+  
+      // 按钮，显示和隐藏
+      var $btnFollow = $('#btn-follow')
+      var $btnUnFollow = $('#btn-un-follow')
+      if ( !curisMe ) {
+      // 不是当前用户，则显示“关注”或者“取消关注”
+        if ( curBtn  ) {
+          $btnUnFollow.show()
         } else {
-            $btnFollow.show()
+          $btnFollow.show()
         }
-    }
+      }
 
     // 关注此人
     $btnFollow.click(function () {
@@ -57,7 +59,7 @@ $(function () {
         if (confirm('确定取消关注？') === false) {
             return
         }
-        ajax.post('/api/profile/unFollow', {
+        ajax.post('/api/profile/unfollow', {
             userId: curUserId
         }, function (err) {
             if (err) {
@@ -69,5 +71,7 @@ $(function () {
             $btnUnFollow.hide()
         })
     })
+    
 })
+
 </script>
