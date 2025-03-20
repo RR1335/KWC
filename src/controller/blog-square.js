@@ -18,7 +18,7 @@ async function  getSquareBlogList(pageIndex = 0) {
 
     const blogList = result.blogList
 
-    // console.log(blogList)
+
 
     // 拼接返回数据
     return new SuccessModel({
