@@ -15,6 +15,7 @@ const userValidate = require('../../validator/user')
 const {genValidator} = require('../../middlewares/validator')
 const { loginCheck } = require('../../middlewares/logincheck')
 const { isTest } = require('../../utils/env')
+const { getFollowers } = require('../../controller/user-relation')
 
 router.prefix('/api/user')
 
@@ -76,6 +77,22 @@ router.post('/logout', loginCheck , async (ctx , next) => {
     ctx.body = await logout(ctx)
 })
 
+
+// 获取 at 列表，即：关注人列表
+router.get('/getAtList',loginCheck , async (ctx , next) => {
+    const { id: userId } = ctx.session.userInfo
+    const result = await getFollowers(userId)
+    const { followersList } = result.data
+
+    const list = followersList.map(user => {
+        return `${user.nickName} - ${user.userName}`
+    })
+
+    // 返回数组的结构  ['昵称 - 用户名'] ['三儿-san','伍仁-wuren']
+    // 显示格式处理 service / _format.js
+    ctx.body = list
+
+})
 
 
 module.exports = router
