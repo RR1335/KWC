@@ -31,10 +31,11 @@ async function create({userId, content, image}) {
 
     // 根据 @ 用户名，获取用户 userId 
     const atUserList = await Promise.all(
-        atUserNameList.map(userName = getUserInfo(userName))
+        atUserNameList.map(userName => getUserInfo(userName))
     )
 
-    const atUserIdList = atUserList.map(user = user.id)
+
+    const atUserIdList = atUserList.map(user => user.id)
 
     // service
     try {
