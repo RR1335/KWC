@@ -6,7 +6,7 @@
     Koa2 —— 和 express 师出同门，支持 async/await 变成方法
     MySQL —— ORM —— Sequelize 
     JWT 
-    Redis
+    Redis / ioredis 
     Jest
     koa-redis 
     koa-generic-session
