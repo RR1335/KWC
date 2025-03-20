@@ -29,8 +29,6 @@ router.get('/loadMore/:pageIndex', loginCheck , async (ctx , next) => {
     const {id:userId} = ctx.session.userInfo
     const result = await getIndexBlogList(userId,pageIndex)
 
-    // console.log(result.data.blogList)
-
     // 渲染为 HTML 字符串 ， load-more.ejs 中 var $tempContainer = $(data.blogListTpl) 
     result.data.blogListTpl = getBlogListStr(result.data.blogList)
 

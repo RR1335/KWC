@@ -49,11 +49,8 @@ async function getBlogListByUser({userName, pageIndex = 0, pageSize = 5}) {
     // result.count 总数，和分页无关
     // result.rows  查询结果，数组
 
-    // console.log(result)
-    // console.log(result.rows[1].dataValues)
-    // console.log(result.rows[1].user)
-
     let blogList = result.rows.map( row => row.dataValues )
+    blogList = formatBlog(blogList)
 
     blogList = blogList.map(blogItem => {
         const user = blogItem.user.dataValues
