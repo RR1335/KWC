@@ -159,6 +159,16 @@
       在 Cookie 中存的 KWC blog.SID 和 redis 中的值一致，保证了 session 后续存取用户数据且在浏览器侧进行了数据加密
 
 
+## Micro Blog显示格式处理
+
+      显示格式处理 services/_format.js
+      格式结构：  return `<a href="/profile/${userName}">${nickName}</a>`
+      在列表中显示 @符号，则 return `<a href="/profile/${userName}">@${nickName}</a>` 
+
+      /getAtlist ，在 routes/api/user.js
+
+
+
 ## 备注
 
       前端没有做 Data format 校验，所有的校验都在后端。
