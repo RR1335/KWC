@@ -114,9 +114,10 @@ async function  deleteFollower(userId,followerId) {
 
 
 
+
 module.exports = {
     getUsersByFollower,
     getFollowersByUser,
     addFollower,
-    deleteFollower
+    deleteFollower,
 }
