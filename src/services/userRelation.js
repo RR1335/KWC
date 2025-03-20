@@ -3,7 +3,7 @@
  * @author        RR1335
  */
 
-const { User , UserRelation } = require('../db/model/indexModel')
+const { User , UserRelation, AtRelation } = require('../db/model/indexModel')
 const { formatUser } = require('./_format')
 const Sequelize = require('sequelize')
 
@@ -111,6 +111,8 @@ async function  deleteFollower(userId,followerId) {
 
     return result > 0
 }
+
+
 
 module.exports = {
     getUsersByFollower,
