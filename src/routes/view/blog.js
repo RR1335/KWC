@@ -4,13 +4,13 @@
  */
 
 const router = require("koa-router")()
-const { loginRedirect } = require('../../middlewares/logincheck')
+const { loginRedirect, loginCheck } = require('../../middlewares/logincheck')
 const { getProfileBlogList } = require('../../controller/blog-profile')
 const {getSquareBlogList } = require('../../controller/blog-square')
 const { isExist } = require('../../controller/user')
 const { getFans,getFollowers } = require('../../controller/user-relation')
 const { getIndexBlogList } = require('../../controller/blog-index')
-const { atMeCount } = require('../../controller/blogAt')
+const { atMeCount ,getAtMeBlogList } = require('../../controller/blogAt')
 
 
 // 首页， index 
@@ -149,5 +149,34 @@ router.get('/square', loginRedirect , async (ctx , next) => {
     })
 })
 
+// atMe 
+router.get('/at-me',loginCheck, async (ctx , next) => {
+    const { id : userId } = ctx.session.userInfo
+    // 获取 @ 数量
+    const atCountResult = await atMeCount(userId)
+    const atCount = atCountResult.data.count 
+    // 获取第一页 list
+    const result = await getAtMeBlogList(userId)
+    const { isEmpty,blogList,pageIndex,pageSize,count} = result.data
+    
+    // 渲染页面
+    await ctx.render('atMe', {
+        atCount,
+        blogData: {
+            isEmpty,
+            blogList,
+            pageIndex,
+            pageSize,
+            count
+        }
+
+    })
+
+    // 标记为已读
+    if (atCount > 0) {
+
+    }
+
+})
 
 module.exports = router
